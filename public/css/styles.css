@@ -151,7 +151,7 @@ nav {
 
 /* Rescued Cats Section */
 #rescued {
-    padding: 4rem 1rem;
+    padding: 6rem 1rem;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -312,7 +312,7 @@ footer {
 }
 .hero {
     position: relative;
-    background: url('https://1drv.ms/i/c/1b743fcc4baddf4e/IQSQzncAuZTUTr_3OZG0EI1-AYqgwHGeJz3ePUGoaVGuiqs?width=660') center/cover no-repeat;
+    background: url('https://1drv.ms/i/c/1b743fcc4baddf4e/IQSQzncAuZTUTr_3OZG0EI1-AYqgwHGeJz3ePUGoaVGuiqs?width=1920&height=1280') center/cover no-repeat;
     height: 100vh;
     display: flex;
     align-items: center;
