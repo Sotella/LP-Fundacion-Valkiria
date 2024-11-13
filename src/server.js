@@ -1,17 +1,18 @@
 const express = require('express');
-const app = express();
 const path = require('path');
+//comentario para que tome el cambio del archivo
 
-// Servir archivos estáticos
-app.use(express.static(__dirname));
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-// Ruta principal
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+// Configura Express para servir archivos estáticos
+app.use(express.static(path.join(__dirname, '../public')));
+
+// Ruta para la página principal
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
-// Puerto dinámico para Railway
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`Servidor corriendo en el puerto ${port}`);
+app.listen(PORT, () => {
+  console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
