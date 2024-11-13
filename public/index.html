@@ -5,319 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fundación Valkiria - Rescate Felino</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --purple-dark: #4A148C;
-            --purple-light: #9C27B0;
-            --white: #FFFFFF;
-            --black: #000000;
-            --gray-light: #F5F5F5;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            background-color: var(--gray-light);
-        }
-
-        /* Header Styles */
-        header {
-            background-color: var(--purple-dark);
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            color: var(--white);
-            font-size: 1.5rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo i {
-            font-size: 2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            cursor: pointer;
-        }
-
-        .nav-links a:hover {
-            color: var(--purple-light);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(74, 20, 140, 0.9), rgba(74, 20, 140, 0.9)),
-                        url('/api/placeholder/1920/1080') center/cover;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            padding: 0 1rem;
-            margin-top: 60px;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .donate-btn {
-            background-color: var(--purple-light);
-            color: var(--white);
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .donate-btn:hover {
-            background-color: #7B1FA2;
-        }
-
-        /* Featured Cases Section */
-        .featured-cases {
-            padding: 4rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .featured-cases h2 {
-            text-align: center;
-            color: var(--purple-dark);
-            margin-bottom: 2rem;
-        }
-
-        .cases-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .case-card {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .case-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .case-content {
-            padding: 1.5rem;
-        }
-
-        .case-content h3 {
-            color: var(--purple-dark);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Rescued Cats Section */
-        #rescued {
-            padding: 4rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .cats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .cat-card {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .cat-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .cat-info {
-            padding: 1.5rem;
-        }
-
-        .cat-info h3 {
-            color: var(--purple-dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .cat-info ul {
-            list-style: none;
-            margin: 1rem 0;
-        }
-
-        .cat-info li {
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .cat-info i {
-            color: var(--purple-light);
-        }
-
-        /* Mobile Menu */
-        .menu-toggle {
-            display: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Section Display */
-        .section {
-            display: none;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        #home.active {
-            display: block;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: var(--purple-dark);
-                flex-direction: column;
-                padding: 1rem;
-                text-align: center;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-        }
-		footer {
-            background-color: var(--purple-dark);
-            color: var(--white);
-            padding: 2rem 1rem;
-            margin-top: 2rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-            text-align: center;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .social-links a {
-            color: var(--white);
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--purple-light);
-        }
-
-        .copyright {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        .footer-divider {
-            width: 100%;
-            max-width: 200px;
-            height: 1px;
-            background-color: var(--purple-light);
-            margin: 0.5rem 0;
-        }
-
-        @media (max-width: 768px) {
-            .footer-content {
-                gap: 1rem;
-            }
-
-            .social-links {
-                gap: 1rem;
-            }
-
-            .social-links a {
-                font-size: 1.3rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
@@ -351,21 +39,21 @@
             <h2>Casos Destacados</h2>
             <div class="cases-grid">
                 <div class="case-card">
-                    <img src="/api/placeholder/400/300" alt="Luna">
+                    <img src="https://1drv.ms/i/c/1b743fcc4baddf4e/IQS6geYjQLwFRKgahumB0dTDAcB3V0R-ztxiFwl701J4qvA?width=660" alt="Luna">
                     <div class="case-content">
                         <h3>Luna</h3>
                         <p>Rescatada de una situación de maltrato, ahora es una gata feliz y saludable en su nuevo hogar.</p>
                     </div>
                 </div>
                 <div class="case-card">
-                    <img src="/api/placeholder/400/300" alt="Simba">
+                    <img src="https://1drv.ms/i/c/1b743fcc4baddf4e/IQSQzncAuZTUTr_3OZG0EI1-AYqgwHGeJz3ePUGoaVGuiqs?width=660" alt="Simba">
                     <div class="case-content">
                         <h3>Simba</h3>
                         <p>Encontrado con una pata lesionada, se recuperó completamente gracias a cirugía y cuidados intensivos.</p>
                     </div>
                 </div>
                 <div class="case-card">
-                    <img src="/api/placeholder/400/300" alt="Mishi">
+                    <img src="https://1drv.ms/i/c/1b743fcc4baddf4e/IQQyJyfdY2tmRL-LrfEuA-LcAdxY6yWmCeix0nUmuPOptoU?width=660" alt="Mishi">
                     <div class="case-content">
                         <h3>Mishi</h3>
                         <p>Rescatado junto a sus hermanos de un sitio abandonado, hoy todos tienen hogares amorosos.</p>
@@ -378,8 +66,9 @@
     <section id="rescued" class="section">
         <h2>Nuestros Rescatados</h2>
         <div class="cats-grid">
+            <!-- Tarjeta 1: Pelusa -->
             <div class="cat-card">
-                <img src="/api/placeholder/400/300" alt="Pelusa">
+                <img src="https://1drv.ms/i/c/1b743fcc4baddf4e/IQRe8k__CuzwRYu5fo3hl4uyAcBOR3cNZjb-GPJR1diyYaU?width=660" alt="Pelusa">
                 <div class="cat-info">
                     <h3>Pelusa</h3>
                     <ul>
@@ -390,7 +79,48 @@
                     <p>Pelusa es una gata muy cariñosa y juguetona. Le encanta dormir en lugares altos y jugar con pelotas.</p>
                 </div>
             </div>
-            <!-- Más tarjetas de gatos aquí -->
+
+            <!-- Tarjeta 2: Luna -->
+            <div class="cat-card">
+                <img src="https://1drv.ms/i/c/1b743fcc4baddf4e/IQS6geYjQLwFRKgahumB0dTDAcB3V0R-ztxiFwl701J4qvA?width=660" alt="Luna">
+                <div class="cat-info">
+                    <h3>Luna</h3>
+                    <ul>
+                        <li><i class="fas fa-calendar"></i> 3 años</li>
+                        <li><i class="fas fa-syringe"></i> Vacunada y desparasitada</li>
+                        <li><i class="fas fa-clipboard-check"></i> Esterilizada</li>
+                    </ul>
+                    <p>Luna es una gata tranquila y amigable. Le gusta dormir en el regazo y disfruta de los lugares soleados.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3: Simba -->
+            <div class="cat-card">
+                <img src="https://1drv.ms/i/c/1b743fcc4baddf4e/IQSQzncAuZTUTr_3OZG0EI1-AYqgwHGeJz3ePUGoaVGuiqs?width=660" alt="Simba">
+                <div class="cat-info">
+                    <h3>Simba</h3>
+                    <ul>
+                        <li><i class="fas fa-calendar"></i> 4 años</li>
+                        <li><i class="fas fa-syringe"></i> Vacunado y desparasitado</li>
+                        <li><i class="fas fa-clipboard-check"></i> Esterilizado</li>
+                    </ul>
+                    <p>Simba es muy activo y le encanta jugar. Disfruta de las alturas y es muy curioso.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 4: Nala -->
+            <div class="cat-card">
+                <img src="https://1drv.ms/i/c/1b743fcc4baddf4e/IQQyJyfdY2tmRL-LrfEuA-LcAdxY6yWmCeix0nUmuPOptoU?width=660" alt="Nala">
+                <div class="cat-info">
+                    <h3>Nala</h3>
+                    <ul>
+                        <li><i class="fas fa-calendar"></i> 1 año</li>
+                        <li><i class="fas fa-syringe"></i> Vacunada y desparasitada</li>
+                        <li><i class="fas fa-clipboard-check"></i> Esterilizada</li>
+                    </ul>
+                    <p>Nala es juguetona y cariñosa. Le gusta la compañía y siempre está buscando atención.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -416,33 +146,7 @@
             </div>
         </div>
     </footer>
-	
-    <script>
-        // Navegación
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const targetId = link.getAttribute('data-section');
-                
-                // Ocultar todas las secciones
-                document.querySelectorAll('.section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                // Mostrar la sección objetivo
-                document.getElementById(targetId).classList.add('active');
-                
-                // Si es móvil, cerrar el menú
-                document.querySelector('.nav-links').classList.remove('active');
 
-                // Scroll al inicio de la página
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
-
-        // Menú móvil
-        document.querySelector('.menu-toggle').addEventListener('click', () => {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
